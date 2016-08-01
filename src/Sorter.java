@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-public class Sort {
+public class Sorter {
 
 	private ArrayList<Integer> elements;
 	
-	public Sort() {
+	public Sorter() {
 		this.elements = new ArrayList<>();
 	}
 	
-	public Sort(ArrayList<Integer> data) {
+	public Sorter(ArrayList<Integer> data) {
 		this.elements = data;
 	}
 	
