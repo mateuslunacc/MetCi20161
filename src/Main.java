@@ -1,33 +1,45 @@
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
-	//Test
-	public static void main(String[] args) {
-		Integer size = 20;
-		Sorter s;
-		ArrayList<Integer> a;
-		Random r;
-		
-		a = new ArrayList<Integer>();
-		r = new Random();
-		
-		for (int i = 0; i < size; i++) {
-			a.add(r.nextInt(99));
-		}
 
-		s = new Sorter(a);
+	QuickSort s;
+	HeapSort h;
+	ArrayList<Integer> a;
+	Scanner sc;
+
+	public static void main(String[] args) throws IOException {
+		QuickSort qs;
+		HeapSort hs;
+		ArrayList<Integer> a;
+		Scanner sc;
 		
-		for (int i = 0; i < size; i++) {
-			System.out.println(s.getElement(i));
+		a = new ArrayList<Integer>();		
+		sc = new Scanner(System.in);
+		
+		while (sc.hasNextInt()) {
+			Integer num = (Integer) sc.nextInt();
+			a.add(num);
 		}
-		System.out.println();
 		
-		s.heapSort();
+		sc.close();
 		
-		for (int i = 0; i < size; i++) {
-			System.out.println(s.getElement(i));
+		if (args[0] == "quicksort") {
+			qs = new QuickSort(a);
+			qs.sort(0, qs.size() - 1);
+			for (int i = 0; i < qs.size(); i++) {
+				System.out.println(qs.getElement(i));
+			}
+		} else {
+			hs = new HeapSort();
+			hs.sort();
+			for (int i = 0; i < hs.size(); i++) {
+				System.out.println(hs.getElement(i));
+			}
 		}
+		
+		
 		
 	}
 

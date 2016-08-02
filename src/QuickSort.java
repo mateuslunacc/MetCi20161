@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
-public class Sorter {
+public class QuickSort {
 
 	private ArrayList<Integer> elements;
 	
-	public Sorter() {
+	public QuickSort() {
 		this.elements = new ArrayList<>();
 	}
 	
-	public Sorter(ArrayList<Integer> data) {
+	public QuickSort(ArrayList<Integer> data) {
 		this.elements = data;
 	}
 	
@@ -32,6 +32,10 @@ public class Sorter {
 		this.elements.clear();
 	}
 	
+	public Integer size() {
+		return elements.size();
+	}
+	
 	protected void swap(Integer index1, Integer index2) {
 	    Integer temp = elements.get(index1);
 	    elements.set(index1, elements.get(index2));
@@ -53,45 +57,15 @@ public class Sorter {
 	    return p;
 	}
 	
-	public void quickSort(Integer first, Integer last ) {
+	public void sort(Integer first, Integer last ) {
 		Integer pivotElement;
 	 
 	    if(first < last) {
 	        pivotElement = this.pivot(first, last);
 	        
-	        quickSort(first, pivotElement-1);
-	        quickSort(pivotElement+1, last);
+	        sort(first, pivotElement-1);
+	        sort(pivotElement+1, last);
 	    }
 	}
 
-	private void maxHeapify(Integer size, Integer index) {
-		Integer right = (index + 1) << 1;
-		Integer left = right - 1;
-		Integer largest = 0;
-	
-		if (left < size && elements.get(left) > elements.get(index))
-			largest = left;
-		else
-			largest = index;
-	
-		if (right < size && elements.get(right) > elements.get(largest))
-			largest = right;
-	
-		if (largest != index) {
-			swap(index, largest);
-			maxHeapify(size, largest);
-		}
-	}
-	
-	public void heapSort() {
-		Integer size = elements.size();
-	
-		for (int p = (size - 1) >> 1; p >= 0; --p)
-			maxHeapify(size, p);
-	
-		for (Integer i = elements.size() - 1; i > 0; --i) {
-			swap(i, 0);
-			maxHeapify(--size, 0);
-		}
-	}
 }
