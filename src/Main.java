@@ -9,6 +9,12 @@ public class Main {
 	ArrayList<Integer> a;
 	Scanner sc;
 
+	private static void output(ArrayList<Integer> e) {
+		for (int i = 0; i < e.size(); i++) {
+			System.out.println(e.get(i));
+		}
+	}
+	
 	public static void main(String[] args) throws IOException {
 		QuickSort qs;
 		HeapSort hs;
@@ -25,21 +31,15 @@ public class Main {
 		
 		sc.close();
 		
-		if (args[0] == "quicksort") {
+		if (args[0].toUpperCase().equals("QUICKSORT")) {
 			qs = new QuickSort(a);
 			qs.sort(0, qs.size() - 1);
-			for (int i = 0; i < qs.size(); i++) {
-				System.out.println(qs.getElement(i));
-			}
+			output(qs.getElements());
 		} else {
-			hs = new HeapSort();
+			hs = new HeapSort(a);
 			hs.sort();
-			for (int i = 0; i < hs.size(); i++) {
-				System.out.println(hs.getElement(i));
-			}
+			output(hs.getElements());
 		}
-		
-		
 		
 	}
 
